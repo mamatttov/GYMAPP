@@ -19,8 +19,9 @@ export default function Generator() {
   const [showModal, setShowModal] = useState(false);
   const [poison, setPoison] = useState("individual");
   const [muscle, setMuscle] = useState([]);
-  const [goals, setGoals] = useState("strength_power");
+  const [goal, setGoal] = useState("strength_power");
 
+  function updateMuscles(muscleGroup) {}
   return (
     <SectionWrapper
       header={"Generate your workout"}
@@ -64,7 +65,26 @@ export default function Generator() {
           <p>Select muscle groups</p>
           <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
         </button>
-        {showModal && <div>Modal Content</div>}
+        {showModal && (
+          <div className="flex flex-col px-3 pb-3">
+            {poison === "individual"
+              ? WORKOUTS[poison]
+              : Object.keys(WORKOUTS[poison]).map(
+                  (muscleGroup, muscleGroupIndex) => {
+                    return (
+                      <button
+                        key={muscleGroupIndex}
+                        className="flex flex-col gap-2"
+                      >
+                        <p className="uppercase hover:text-blue-400 duration-200">
+                          {muscleGroup.replaceAll("_", " ")}
+                        </p>
+                      </button>
+                    );
+                  },
+                )}
+          </div>
+        )}
       </div>
       <Header
         index={"03"}
@@ -75,10 +95,10 @@ export default function Generator() {
         {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
           return (
             <button
-              onClick={() => setGoals(scheme)}
+              onClick={() => setGoal(scheme)}
               className={
                 "bg-slate-950 py-3 rounded-lg border duration-200 hover:border-blue-600" +
-                (scheme === goals
+                (scheme === goal
                   ? " border-blue-600 bg-white/5 "
                   : " border-blue-400 ")
               }
