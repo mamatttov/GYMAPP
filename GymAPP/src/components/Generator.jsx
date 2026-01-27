@@ -1,5 +1,5 @@
-import React from "react";
 import SectionWrapper from "./SectionWrapper";
+import { WORKOUTS } from "./utils/swoldier";
 function Header(props) {
   const { title, index, description } = props;
   return (
@@ -22,11 +22,27 @@ export default function Generator() {
     >
       <Header
         index={"01"}
-        title={"Select your workout"}
-        description={
-          "Choose a workout plan based on your goals and preferences"
-        }
+        title={"Pick your poison"}
+        description={"Select the workout you wish to endure."}
       />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {Object.keys(WORKOUTS).map((type, typeIndex) => {
+          return (
+            <button
+              className="bg-slate-950 py-3 rounded-lg border border-blue-400 duration-200 hover:border-blue-600"
+              key={typeIndex}
+            >
+              <p className="uppercase">{type.replace("_", " ")}</p>
+            </button>
+          );
+        })}
+      </div>
+      <Header
+        index={"02"}
+        title={"Lock on targets"}
+        description={"Select the muscles judged for annihilation"}
+      />
+      <div></div>
     </SectionWrapper>
   );
 }
