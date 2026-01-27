@@ -35,7 +35,13 @@ export default function Generator() {
         {Object.keys(WORKOUTS).map((type, typeIndex) => {
           return (
             <button
-              className="bg-slate-950 py-3 rounded-lg border border-blue-400 duration-200 hover:border-blue-600"
+              onClick={() => setPoison(type)}
+              className={
+                "bg-slate-950 py-3 rounded-lg border duration-200 hover:border-blue-600" +
+                (type === poison
+                  ? " border-blue-600 bg-white/5 "
+                  : " border-blue-400 ")
+              }
               key={typeIndex}
             >
               <p className="uppercase">{type.replace("_", " ")}</p>
@@ -59,6 +65,29 @@ export default function Generator() {
           <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
         </button>
         {showModal && <div>Modal Content</div>}
+      </div>
+      <Header
+        index={"03"}
+        title={"Become juggernaut"}
+        description={"Select your ultimate objective"}
+      />
+      <div className="grid grid-cols-3 gap-4">
+        {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
+          return (
+            <button
+              onClick={() => setGoals(scheme)}
+              className={
+                "bg-slate-950 py-3 rounded-lg border duration-200 hover:border-blue-600" +
+                (scheme === goals
+                  ? " border-blue-600 bg-white/5 "
+                  : " border-blue-400 ")
+              }
+              key={schemeIndex}
+            >
+              <p className="uppercase">{scheme.replace("_", " ")}</p>
+            </button>
+          );
+        })}
       </div>
     </SectionWrapper>
   );
