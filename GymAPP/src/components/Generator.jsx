@@ -1,5 +1,6 @@
 import SectionWrapper from "./SectionWrapper";
-import { WORKOUTS } from "./utils/swoldier";
+import { WORKOUTS, SCHEMES } from "./utils/swoldier";
+import { useState } from "react";
 function Header(props) {
   const { title, index, description } = props;
   return (
@@ -15,6 +16,11 @@ function Header(props) {
   );
 }
 export default function Generator() {
+  const [showModal, setShowModal] = useState(false);
+  const [poison, setPoison] = useState("individual");
+  const [muscle, setMuscle] = useState([]);
+  const [goals, setGoals] = useState("strength_power");
+
   return (
     <SectionWrapper
       header={"Generate your workout"}
@@ -42,7 +48,18 @@ export default function Generator() {
         title={"Lock on targets"}
         description={"Select the muscles judged for annihilation"}
       />
-      <div></div>
+      <div className="bg-slate-950 p-3 border border-solid border-blue-400 rounded-lg flex flex-col">
+        <button
+          onClick={() => {
+            setShowModal(!showModal);
+          }}
+          className="relative flex items-center justify-center cursor-pointer"
+        >
+          <p>Select muscle groups</p>
+          <i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down"></i>
+        </button>
+        {showModal && <div>Modal Content</div>}
+      </div>
     </SectionWrapper>
   );
 }
