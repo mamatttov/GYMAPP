@@ -3,7 +3,7 @@ import Generator from "./components/Generator";
 import Workout from "./components/Workout";
 import { useState } from "react";
 import { generateWorkout } from "./components/utils/functions";
-
+import Footer from "./components/Footer";
 function App() {
   const [workout, setWorkout] = useState(null);
   const [poison, setPoison] = useState("individual");
@@ -32,6 +32,7 @@ function App() {
         updateWorkout={updateWorkout}
       />
       {workout && <Workout workout={workout} />}
+      <Footer />
     </main>
   );
 }
