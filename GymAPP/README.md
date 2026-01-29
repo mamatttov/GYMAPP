@@ -29,17 +29,20 @@
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd GymAPP
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -116,17 +119,20 @@ This project is open source and available under the MIT License.
 ### Установка
 
 1. Клонируйте репозиторий:
+
 ```bash
 git clone <repository-url>
 cd GymAPP
 ```
 
 2. Установите зависимости:
+
 ```bash
 npm install
 ```
 
 3. Запустите сервер разработки:
+
 ```bash
 npm run dev
 ```
