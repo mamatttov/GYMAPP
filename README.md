@@ -1,5 +1,7 @@
 # GymAPP - Workout Generator
 
+Netlify link: https://helpful-rolypoly-1ca346.netlify.app/
+
 [English](#english) | [Русский](#русский)
 
 ---
